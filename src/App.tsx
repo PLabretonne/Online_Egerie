@@ -15,7 +15,9 @@ function App() {
         muted
         loop
         playsInline
+        webkit-playsinline="true"
         className="absolute inset-0 w-full h-full object-cover"
+        poster={`${import.meta.env.BASE_URL}logo.png`}
       >
         <source
           src={`${import.meta.env.BASE_URL}video-bg.mp4`}
