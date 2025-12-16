@@ -31,15 +31,15 @@ function App() {
         <img
           src={`${import.meta.env.BASE_URL}bg-mobile.gif`}
           alt=""
-          className="absolute inset-0 w-full h-full object-contain bg-black"
+          className="absolute inset-0 w-full h-full object-cover"
         />
       )}
 
       <div className="absolute inset-0 bg-black/40" />
 
-      <nav className="absolute top-0 right-0 z-50 px-8 py-8">
+      <nav className="absolute top-0 right-0 z-[60] px-8 py-8">
         <button
-          className="md:hidden text-white text-2xl relative z-50"
+          className="md:hidden text-white text-2xl"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? '✕' : '☰'}
@@ -58,7 +58,7 @@ function App() {
         </div>
 
         <div
-          className={`md:hidden fixed inset-0 bg-black/95 z-40 flex flex-col items-center justify-center gap-8 transition-all duration-300 ${
+          className={`md:hidden fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center gap-8 transition-all duration-300 ${
             isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
           }`}
         >
