@@ -37,14 +37,14 @@ function App() {
 
       <div className="absolute inset-0 bg-black/40" />
 
-      <nav className="absolute top-0 right-0 z-[60] px-8 py-8">
-        <button
-          className="md:hidden text-white text-2xl"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? '✕' : '☰'}
-        </button>
+      <button
+        className="md:hidden fixed top-8 right-8 z-[100] text-white text-2xl"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        {isMenuOpen ? '✕' : '☰'}
+      </button>
 
+      <nav className="absolute top-0 right-0 z-50 px-8 py-8">
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
@@ -58,7 +58,7 @@ function App() {
         </div>
 
         <div
-          className={`md:hidden fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center gap-8 transition-all duration-300 ${
+          className={`md:hidden fixed inset-0 bg-black/95 z-[90] flex flex-col items-center justify-center gap-8 transition-all duration-300 ${
             isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
           }`}
         >
