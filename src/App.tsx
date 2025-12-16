@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
 
   const isIOS =
     typeof window !== 'undefined' &&
@@ -13,45 +12,24 @@ function App() {
     { name: 'About Us', href: '#' },
   ]
 
-  useEffect(() => {
-    if (!isIOS || !videoRef.current) return
-
-    const tryPlay = () => {
-      videoRef.current?.play().catch(() => {})
-      window.removeEventListener('touchstart', tryPlay)
-      window.removeEventListener('click', tryPlay)
-    }
-
-    window.addEventListener('touchstart', tryPlay, { once: true })
-    window.addEventListener('click', tryPlay, { once: true })
-
-    return () => {
-      window.removeEventListener('touchstart', tryPlay)
-      window.removeEventListener('click', tryPlay)
-    }
-  }, [isIOS])
-
   return (
     <div className="relative h-screen w-full overflow-hidden bg-black">
-      <video
-        ref={videoRef}
-        autoPlay={!isIOS}
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-        poster={`${import.meta.env.BASE_URL}logo.png`}
-      >
-        <source
-          src={`${import.meta.env.BASE_URL}video-bg.mp4`}
-          type="video/mp4"
-        />
-      </video>
-
-      {isIOS && (
+      {!isIOS ? (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source
+            src={`${import.meta.env.BASE_URL}video-bg.mp4`}
+            type="video/mp4"
+          />
+        </video>
+      ) : (
         <img
-          src={`${import.meta.env.BASE_URL}logo.png`}
+          src={`${import.meta.env.BASE_URL}bg-mobile.gif`}
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />
