@@ -18,7 +18,7 @@ function App() {
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source
-          src="/video-bg.mp4"
+          src={`${import.meta.env.BASE_URL}video-bg.mp4`}
           type="video/mp4"
         />
       </video>
@@ -75,7 +75,7 @@ function App() {
 
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <img 
-          src="/logo.png" 
+          src={`${import.meta.env.BASE_URL}logo.png`}
           alt="Egerie Climbing" 
           className="max-w-[80%] md:max-w-[50%] lg:max-w-[40%] h-auto"
         />
